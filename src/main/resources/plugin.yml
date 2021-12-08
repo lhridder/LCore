@@ -1,0 +1,15 @@
+name: LCore
+version: 1.0
+author: lhridder
+main: nl.lucasridder.lcore.LCore
+api-version: 1.8
+commands:
+  join:
+    description: joins
+    usage: /join
+  map:
+    description: map
+    usage: /map
+  stats:
+    description: stats
+    usage: /stats

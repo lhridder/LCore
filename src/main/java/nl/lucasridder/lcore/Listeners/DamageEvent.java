@@ -13,8 +13,9 @@ public class DamageEvent implements Listener {
     @EventHandler
     public void onDamage(EntityDamageByEntityEvent e) {
         if (e.getEntity() instanceof Player && (e.getDamager() instanceof Player || e.getDamager() instanceof Projectile)) {
+            // Assume damager is player
             Entity Damager = e.getDamager();
-
+            // Check if damager was a projectile
             if (e.getDamager() instanceof Projectile) {
                 ProjectileSource shooter = ((Projectile) e.getDamager()).getShooter();
                 if (!(shooter instanceof Player)) {
