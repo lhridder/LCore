@@ -10,7 +10,7 @@ public class RespawnEvent implements Listener {
     @EventHandler
     public void respawn(PlayerRespawnEvent e) {
         Player player = e.getPlayer();
-        //TODO
+        //TODO tp to nexus
     }
 
 }

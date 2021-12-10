@@ -12,7 +12,7 @@ public class InteractEvent implements Listener {
     @EventHandler
     public void respawn(PlayerInteractEvent e) {
         Player player = e.getPlayer();
-        if(!Teams.blue.contains(player) || !Teams.red.contains(player) && !player.isOp()) {
+        if((!Teams.blue.contains(player) || !Teams.red.contains(player)) && !player.isOp()) {
             e.setCancelled(true);
             player.sendMessage(ChatColor.RED + "No permission to interact with this block");
         } else {
