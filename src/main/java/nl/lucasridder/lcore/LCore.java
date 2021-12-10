@@ -2,10 +2,10 @@ package nl.lucasridder.lcore;
 
 import nl.lucasridder.lcore.Commands.JoinCommand;
 import nl.lucasridder.lcore.Commands.MapCommand;
+import nl.lucasridder.lcore.Commands.PlaytimeCommand;
 import nl.lucasridder.lcore.Commands.StatsCommand;
 import nl.lucasridder.lcore.Listeners.*;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitRunnable;
 
 public class LCore extends JavaPlugin {
 
@@ -36,6 +36,7 @@ public class LCore extends JavaPlugin {
         this.getCommand("join").setExecutor(new JoinCommand());
         this.getCommand("map").setExecutor(new MapCommand());
         this.getCommand("stats").setExecutor(new StatsCommand());
+        this.getCommand("playtime").setExecutor(new PlaytimeCommand());
 
         //TODO tablist
     }
