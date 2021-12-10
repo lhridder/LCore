@@ -29,6 +29,8 @@ public class LCore extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new JoinEvent(), this);
         getServer().getPluginManager().registerEvents(new WeatherListener(), this);
         getServer().getPluginManager().registerEvents(new FoodListener(), this);
+        getServer().getPluginManager().registerEvents(new InteractEvent(), this);
+        getServer().getPluginManager().registerEvents(new MoveEvent(), this);
 
         //register commands
         this.getCommand("join").setExecutor(new JoinCommand());

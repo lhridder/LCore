@@ -1,7 +1,7 @@
 package nl.lucasridder.lcore.Listeners;
 
-import nl.lucasridder.lcore.Managers.Prefixes;
 import nl.lucasridder.lcore.Managers.Statistics;
+import nl.lucasridder.lcore.Managers.Teams;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -18,7 +18,7 @@ public class DeathEvent implements Listener {
     public void onDeath(PlayerDeathEvent e) {
         Player player = e.getEntity().getPlayer();
         String name = player.getName();
-        ChatColor prefix = Prefixes.team(player);
+        ChatColor prefix = Teams.prefix(player);
         EntityDamageEvent cause = e.getEntity().getLastDamageCause();
         //player kill
         if (cause.getEntity() instanceof Player || cause instanceof Projectile) {
@@ -30,9 +30,9 @@ public class DeathEvent implements Listener {
                 if (shooter instanceof Player) {
                     killer = (Entity) shooter;
                 }
-                e.setDeathMessage(prefix + name + " was shot by " + Prefixes.team((Player) killer) + killer.getName());
+                e.setDeathMessage(prefix + name + " was shot by " + Teams.prefix((Player) killer) + killer.getName());
             } else {
-                e.setDeathMessage(prefix + name + " was killed by " + Prefixes.team((Player) killer) + killer.getName());
+                e.setDeathMessage(prefix + name + " was killed by " + Teams.prefix((Player) killer) + killer.getName());
             }
             Statistics.registerKill((Player) killer);
         } else {
