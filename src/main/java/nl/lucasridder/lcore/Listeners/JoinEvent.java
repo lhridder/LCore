@@ -1,5 +1,6 @@
 package nl.lucasridder.lcore.Listeners;
 
+import nl.lucasridder.lcore.LCore;
 import nl.lucasridder.lcore.Managers.Teams;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -20,6 +21,11 @@ public class JoinEvent implements Listener {
             players.hidePlayer(player);
         }
         player.setFlying(true);
+
+        //TODO tablist
+
+        //TODO scoreboard
+
         // set join message
         e.setJoinMessage(Teams.prefix(e.getPlayer()) + e.getPlayer().getName() + " joined.");
     }

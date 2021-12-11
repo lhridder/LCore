@@ -38,7 +38,6 @@ public class LCore extends JavaPlugin {
         this.getCommand("stats").setExecutor(new StatsCommand());
         this.getCommand("playtime").setExecutor(new PlaytimeCommand());
 
-        //TODO tablist
     }
 
 }
