@@ -1,0 +1,12 @@
+maplist: ["castle"]
+lobby:
+  world: world
+  x: 164
+  y: 64
+  z: 258
+maps:
+  castle:
+    spawn:
+      x: 0
+      y: 87
+      z:

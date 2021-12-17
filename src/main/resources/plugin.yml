@@ -3,6 +3,7 @@ version: 1.0
 author: lhridder
 main: nl.lucasridder.lcore.LCore
 api-version: 1.8
+depend: ['Multiverse-Core']
 commands:
   join:
     description: joins
