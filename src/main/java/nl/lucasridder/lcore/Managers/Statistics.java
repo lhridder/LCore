@@ -19,13 +19,25 @@ public class Statistics {
     }
 
     // Log nexus destroy
-    public static void registerDestroy(Player player) {
+    public static void registerNexusBreak(Player player) {
         UUID uuid = player.getUniqueId();
         //TODO yeet into db
     }
 
     // Log win
     public static void registerWin(Player player) {
+        UUID uuid = player.getUniqueId();
+        //TODO yeet into db
+    }
+
+    // Log block broken
+    public static void registerBlockBreak(Player player) {
+        UUID uuid = player.getUniqueId();
+        //TODO yeet into db
+    }
+
+    // Log block placed
+    public static void registerBlockPlace(Player player) {
         UUID uuid = player.getUniqueId();
         //TODO yeet into db
     }

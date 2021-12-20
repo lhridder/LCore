@@ -12,11 +12,11 @@ import java.util.Random;
 public class Arenas {
     static String currentMap = "";
     static String currentWorld = "";
-    Location lobby = null;
+    static Location lobby = null;
     static ArrayList<String> maps = new ArrayList<>();
     public static FileConfiguration config = LCore.plugin.getConfig();
 
-    public void getArenas() {
+    public static void getArenas() {
         // fetch lobby coords
         lobby.setX(config.getDouble("lobby.x"));
         lobby.setY(config.getDouble("lobby.y"));
@@ -29,7 +29,7 @@ public class Arenas {
         }
     }
 
-    public void newArena() {
+    public static void newArena() {
         // Choose new map
         Random rand = new Random();
         ArrayList<String> newmaps = maps;
@@ -49,11 +49,16 @@ public class Arenas {
         currentWorld = newmap + "_active";
     }
 
-    public void closeArenas() {
+    public static void closeArenas() {
         for (Player player : Bukkit.getOnlinePlayers()) {
             player.teleport(lobby);
         }
         LCore.wm.deleteWorld(currentWorld);
+    }
+
+    public static Boolean inArena(Location location) {
+        //TODO check
+        return false;
     }
 
 }

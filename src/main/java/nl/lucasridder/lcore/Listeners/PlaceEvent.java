@@ -1,5 +1,7 @@
 package nl.lucasridder.lcore.Listeners;
 
+import nl.lucasridder.lcore.Managers.Arenas;
+import nl.lucasridder.lcore.Managers.Statistics;
 import nl.lucasridder.lcore.Managers.Teams;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -12,11 +14,15 @@ public class PlaceEvent implements Listener {
     @EventHandler
     public void onPlace(BlockPlaceEvent e){
         Player player = e.getPlayer();
-        if(!Teams.blue.contains(player) || !Teams.red.contains(player) && !player.isOp()) {
-            e.setCancelled(true);
-            player.sendMessage(ChatColor.RED + "No permission to place this block");
+        if(Teams.spec.contains(player)) {
+            if(!player.isOp()) {
+                e.setCancelled(true);
+                player.sendMessage(ChatColor.RED + "No permission to place this block");
+            }
         } else {
-            //TODO check arena bounds
+            if(Arenas.inArena(e.getBlock().getLocation())) {
+                Statistics.registerBlockPlace(player);
+            }
         }
 
     }

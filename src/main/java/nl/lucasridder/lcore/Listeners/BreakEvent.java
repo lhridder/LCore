@@ -1,5 +1,7 @@
 package nl.lucasridder.lcore.Listeners;
 
+import nl.lucasridder.lcore.Managers.Arenas;
+import nl.lucasridder.lcore.Managers.Statistics;
 import nl.lucasridder.lcore.Managers.Teams;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -13,17 +15,22 @@ public class BreakEvent implements Listener {
     @EventHandler
     public void onBlockBreak(BlockBreakEvent e) {
         Player player = e.getPlayer();
-        if(!Teams.blue.contains(player) || !Teams.red.contains(player) && !player.isOp()) {
-            e.setCancelled(true);
-            player.sendMessage(ChatColor.RED + "No permission to break this block");
-        } else {
-            //nexus
-            if(e.getBlock().getType().equals(Material.OBSIDIAN)) {
-                //dont drop
-                e.getBlock().getDrops().clear();
-                //TODO check if own nexus
+        if(Teams.spec.contains(player)) {
+            if (!player.isOp()) {
+                e.setCancelled(true);
+                player.sendMessage(ChatColor.RED + "No permission to break this block");
             }
-            //TODO check arena bounds
+        } else {
+            if(Arenas.inArena(e.getBlock().getLocation())) {
+                // Nexus check
+                if(e.getBlock().getType().equals(Material.OBSIDIAN)) {
+                    //dont drop
+                    e.getBlock().getDrops().clear();
+                    //TODO check if own nexus
+                    Statistics.registerNexusBreak(player);
+                }
+                Statistics.registerBlockBreak(player);
+            }
         }
     }
 
