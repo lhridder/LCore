@@ -3,7 +3,7 @@ version: 1.0
 author: lhridder
 main: nl.lucasridder.lcore.LCore
 api-version: 1.8
-depend: ['Multiverse-Core']
+depend: ['Multiverse-Core', 'WorldEdit']
 commands:
   join:
     description: joins
@@ -14,3 +14,7 @@ commands:
   stats:
     description: stats
     usage: /stats
+  playtime:
+    description: playtime
+    aliases: [pt]
+    usage: /playtime
