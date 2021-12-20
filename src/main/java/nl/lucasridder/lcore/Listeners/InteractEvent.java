@@ -1,7 +1,6 @@
 package nl.lucasridder.lcore.Listeners;
 
 import nl.lucasridder.lcore.Managers.Teams;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -14,7 +13,6 @@ public class InteractEvent implements Listener {
         Player player = e.getPlayer();
         if((!Teams.blue.contains(player) || !Teams.red.contains(player)) && !player.isOp()) {
             e.setCancelled(true);
-            player.sendMessage(ChatColor.RED + "No permission to interact with this block");
         } else {
             //TODO check arena bounds
         }
