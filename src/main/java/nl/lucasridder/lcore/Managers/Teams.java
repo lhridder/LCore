@@ -41,6 +41,7 @@ public class Teams {
         }
         // set tab name
         player.setDisplayName(prefix(player) + player.getName());
+        player.setPlayerListName(prefix(player) + player.getName());
     }
 
     // Leave team
