@@ -38,12 +38,25 @@ public class DeathEvent implements Listener {
         } else {
             switch (cause.getCause()) {
                 case VOID:
-                    e.setDeathMessage(prefix + name + " fell from the world.");
+                    if (player.getLastDamageCause().getEntity() instanceof Player) {
+                        Player killer = (Player) player.getLastDamageCause().getEntity();
+                        Statistics.registerKill(killer);
+                        e.setDeathMessage(prefix + name + " fell from the world after being hit by " + Teams.prefix(killer) + killer.getName() + ".");
+                    } else {
+                        e.setDeathMessage(prefix + name + " fell from the world.");
+                    }
                     break;
                 case DROWNING:
                     e.setDeathMessage(prefix + name + " drowned.");
                     break;
                 case FALL:
+                    if (player.getLastDamageCause().getEntity() instanceof Player) {
+                        Player killer = (Player) player.getLastDamageCause().getEntity();
+                        Statistics.registerKill(killer);
+                        e.setDeathMessage(prefix + name + " fell till death after being hit by " + Teams.prefix(killer) + killer.getName() + ".");
+                    } else {
+                        e.setDeathMessage(prefix + name + " fell till death.");
+                    }
                     e.setDeathMessage(prefix + name + " fell till death.");
                     break;
                 case FIRE:
