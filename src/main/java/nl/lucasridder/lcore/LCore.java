@@ -24,16 +24,7 @@ public class LCore extends JavaPlugin {
     @Override
     public void onEnable() {
         //config
-        if (!getDataFolder().exists()) {
-            //create config folder
-            try {
-                getDataFolder().createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } else {
-            plugin.getConfig().options().copyDefaults(true);
-        }
+        plugin.getConfig().options().copyDefaults(true);
 
         //register listeners
         getServer().getPluginManager().registerEvents(new JoinEvent(), this);
@@ -48,6 +39,7 @@ public class LCore extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new FoodListener(), this);
         getServer().getPluginManager().registerEvents(new InteractEvent(), this);
         getServer().getPluginManager().registerEvents(new MoveEvent(), this);
+        getServer().getPluginManager().registerEvents(new PreCommandEvent(), this);
 
         //register commands
         this.getCommand("join").setExecutor(new JoinCommand());
